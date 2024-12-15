@@ -4,7 +4,6 @@ import run from "../Config/Polar";
 export const context = createContext();
 
 const ContextProvider = (props)=>{
-
     const[input,setInput]=useState("");
     const [recentPrompt,setRecentPrompt] = useState("")
     const [prevPrompts,setPrevPrompts] = useState("")
@@ -13,10 +12,20 @@ const ContextProvider = (props)=>{
     useState("")
     const [resultData,setResultData] = useState("")
 
+     
+    
     const onSent = async (prompt) =>{
-       await run(input)
-    }
 
+         setResultData("")
+         setLoading(true)
+         setShowResult(true)
+
+      const response = await run(input)
+      setResultData(response)
+      setLoading(false)
+      setInput("")
+    }
+    
 
 
     const contextValue ={

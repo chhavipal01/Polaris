@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 import './main.css';
 import { assets } from '../../assets/assets';
-import { context } from '../../Context/context';
-
+import {context } from '../../Context/context'
 
 function Mainbar() {
 
-const {onSent,recentPrompt , showResult,loading , resultData ,setInput , input} = useContext(context)
+  const {onSent , recentPromp ,showResult , loading, resultData , setInput,input} = useContext(context)
 
   return (
+    <>
     <div className='main flex-1 min-h-screen pb-[15vh] relative'>
       <div className="nav d-flex justify-between align-items-center flex items-center  text-[22px] p-5 text-[#585858]">
         <p className="brand-name">PolarisAi</p>
@@ -38,6 +38,7 @@ const {onSent,recentPrompt , showResult,loading , resultData ,setInput , input} 
         </p>
       </div>
     </div>
+    </>
   );
 }
 

@@ -6,7 +6,7 @@ import {
     HarmBlockThreshold,
   } from  "@google/generative-ai";
   
-  const apiKey = process.env.REACT_APP_API_KEY; // Corrected syntax
+  const apiKey = import.meta.env.VITE_API_KEY; // Corrected syntax
 if (!apiKey) {
   throw new Error("API key is missing. Please set REACT_APP_API_KEY in your .env file.");
 }
@@ -33,6 +33,7 @@ if (!apiKey) {
   
     const result = await chatSession.sendMessage(prompt);
     console.log(result.response.text());
+    return response.text();
   }
   
  export default run;

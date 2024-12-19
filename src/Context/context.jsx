@@ -19,11 +19,14 @@ const ContextProvider = (props)=>{
          setResultData("")
          setLoading(true)
          setShowResult(true)
+         setRecentPrompt(input)
 
-      const response = await run(input)
-      setResultData(response)
-      setLoading(false)
-      setInput("")
+        const response = await run(input)
+        let responseArray = response.split("**");
+        let newAr
+        setResultData(response); 
+        setLoading(false)
+        setInput("")
     }
     
 

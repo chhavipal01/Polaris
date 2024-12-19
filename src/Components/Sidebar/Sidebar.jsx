@@ -1,54 +1,65 @@
-import React from 'react'
-import "./Sidebar.css"
-import {assets} from '../../assets/assets'
-import { useState } from "react"
-
+import React, { useState } from "react";
+import { assets } from "../../assets/assets";
 
 const Sidebar = () => {
-
-
-const [extented , setExtended] = useState(false)
-
-
-
+  const [extended, setExtended] = useState(false);
 
   return (
-    <div className='sidebar min-h-screen flex flex-col justify-between bg-[#f0f4f9] px-6 py-6  p-7 '>
-      <div className="top">
-        <img  className=' img menu block ml-2 w-5 cursor-pointer' onClick={() =>setExtended(prev => !prev)} src={assets.menu_icon}  alt=''/>
-        <div className="new-chat mt-2 inline-flex items-center gap-4 px-2.5 py-1 bg-[#e6eaf1] rounded-full text-[17px] text-gray-500 cursor-pointer">
-          <img className='img w-5' src={assets.plus_icon} alt="" />
-          {extented?<p className='new pt-2'>New Chat</p>:null}
-        </div>
-        {extented
-        ?
-          <div className="recent flex flex-col">
-          <p className='recent-title mt-4 mb-3'>Recent</p>
-          <div className="recent-entry flex items-start gap-2.5 p-2.5 pr-10 rounded-[50px] text-[#282828] cursor-pointer hover:bg-[#e2e6eb]">
-            <img className='img w-5' src={assets.message_icon} alt="" />
-            <p>What is react...</p>
+    <div
+      className={`min-h-screen bg-gray-100 shadow-md flex flex-col justify-between p-4 transition-all duration-300 ${
+        extended ? "w-64" : "w-20"
+      }`}
+    >
+      {/* Top Section */}
+      <div className="space-y-4">
+        {/* Menu Icon */}
+        <img
+          src={assets.menu_icon}
+          alt="Menu"
+          className="w-6 cursor-pointer"
+          onClick={() => setExtended((prev) => !prev)}
+        />
 
+        {/* New Chat */}
+        <div className="flex items-center gap-4 p-2 rounded-md hover:bg-gray-200 cursor-pointer">
+          <img src={assets.plus_icon} alt="New Chat" className="w-6" />
+          {extended && <p className="text-gray-600 text-lg">New Chat</p>}
+        </div>
+
+        {/* Recent Chats */}
+        {extended && (
+          <div className="mt-4">
+            <p className="text-gray-500 font-semibold mb-2">Recent</p>
+            <div className="flex items-center gap-4 p-2 rounded-md hover:bg-gray-200 cursor-pointer">
+              <img src={assets.message_icon} alt="Chat" className="w-6" />
+              <p className="text-gray-600">What is React...</p>
+            </div>
           </div>
-        </div>
-        :null
-        }
+        )}
       </div>
-      <div className="bottom flex flex-col">
-        <div className="bottom-item recent-entry pr-2.5 cursor-pointer">
-          <img className='img w-5' src={assets.question_icon} alt="" />
-          {extented? <p>Help</p> :null}
+
+      {/* Bottom Section */}
+      <div className="space-y-4">
+        {/* Help */}
+        <div className="flex items-center gap-4 p-2 rounded-md hover:bg-gray-200 cursor-pointer">
+          <img src={assets.question_icon} alt="Help" className="w-6" />
+          {extended && <p className="text-gray-600">Help</p>}
         </div>
-        <div className="bottom-item recent-entry pr-2.5 cursor-pointer">
-          <img className='img w-5' src={assets.history_icon} alt="" />
-          {extented? <p>Activity</p> :null}
+
+        {/* Activity */}
+        <div className="flex items-center gap-4 p-2 rounded-md hover:bg-gray-200 cursor-pointer">
+          <img src={assets.history_icon} alt="Activity" className="w-6" />
+          {extended && <p className="text-gray-600">Activity</p>}
         </div>
-        <div className="bottom-item recent-entry pr-2.5 cursor-pointer">
-        <img className='img w-5' src={assets.setting_icon} alt="" />
-          {extented? <p>Settings</p> :null}
+
+        {/* Settings */}
+        <div className="flex items-center gap-4 p-2 rounded-md hover:bg-gray-200 cursor-pointer">
+          <img src={assets.setting_icon} alt="Settings" className="w-6" />
+          {extended && <p className="text-gray-600">Settings</p>}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Sidebar;
